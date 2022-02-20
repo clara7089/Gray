@@ -1,0 +1,31 @@
+<x></x>{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="space-container container">
+            <div class="row">
+                <span class="header-text">Results</span>
+            </div>
+            <div class="container">
+                <div class="row">
+                {% for result in results %}
+                <div class="col col-sm-4" style="margin-bottom: 20px">
+                    <div class="card card-main">
+                        <!--
+                        <div class="card-header">
+                            {#  car.user #}
+                        </div>
+                        -->
+                        <img class="card-img-top card-img-top-main" alt="Card image cap" src="{{ result }}">
+                    </div>
+                </div>
+                    {% endfor %}
+                </div>
+            </div>
+    </div>
+    
+    </body>
+</html>
+{% endblock %}
+

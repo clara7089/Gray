@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<body>
+  
+    <div class="space-container container">
+                <div class="row">
+                    <span class="header-text">Automatic Classification</span>
+                </div>
+                <!-- <img src="data:image/jpeg;base64,{{ imageBytes | safe }}"> -->
+
+                  <div class="container">                      <form method="post" action="/classify"  enctype="multipart/form-data">
+                          <!-- <div class="form-group row">
+                            <label for="name">Disease Class</label>
+                            <select class="form-control form-control-lg" name="disease" id="disease">
+                                {% for option in options %}
+                                  <option>{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </div> -->
+                        
+                          <div class="form-group row">
+                              <div class="upload-btn-wrapper">
+                              <button class="btn">Upload patient sample</button>
+                              <input type='file' name="image" id="image" accept=".png, .jpg, .jpeg"
+                              onchange="loadFile(event)"
+                               />
+                            </div>
+                          </div>
+                          <img id="output"/>
+                         <div class="form-group row">
+                            <button class="btn btn-dark"
+                            type="submit">Predict</button>
+                        </div>
+                      </form>
+                  </div>           
+                    
+            </div>
+        </div>
+    </div>
+    <div>
+      {% if predictions is defined %}
+        <div class="container">
+          <h2> Top 4 Predictions </h2>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col"> Disease </th>
+            <th scope="col"> Confidence </th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for key, value in predictions.items() %}
+        <tr>
+          <td>{{key}}</td>
+          <td> {{value}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+        </div>
+      {% endif %}
+    
+
+
+    </div>
+     
+     <script>
+       $("tbody tr:first").css("background-color", "green");
+      //  $('#myForm').submit(function(e){
+      //    e.preventDefault();
+      //    $.ajax({
+      //        url: '/classify',
+      //        type: 'post',
+      //        processData: false,
+      //         contentType: false,
+      //         async: false,
+      //         cache: false,
+      //        data: $('#myForm').serialize(),
+      //        success: function(d){
+      //            console.log(d);
+      //            $("#classResult").text(d);
+      //        },
+      //       error: function(d) {
+      //           console.log(d);
+      //       }
+      //   });
+      //  });
+       </script>
+      <script>
+      var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+          URL.revokeObjectURL(output.src) // free memory
+        }
+      };
+      document.getElementById("image").required = true;
+    </script>
+    
+    </body>
+    
+
+
+
+</html>
+{% endblock %}
+

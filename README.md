@@ -1,4 +1,7 @@
 # Gray
+
+By Harris Beg, Clara Wang, Kai Nakamura
+
 ## Inspiration
 Gray's Anatomy (not the TV show, the reference book) is commonly referred to as the Bible of the medical world. Though the intersection of medicine and technology has been growing rapidly, the healthcare system is, to put it frankly, still inherently broken. Reference books are outdated, and often more time is spent than needed for basic classification problems. As a consequence, we developed Gray, a tribute to the well-reputed Gray's anatomy reference book that uses DL techniques to allow healthcare professionals to contribute to a crowd-sourced database for the general public as well as other doctors seeking a quick diagnosis. We truly believe that our project, given scale and more time, is where medicine is headed.
 
